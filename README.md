@@ -229,6 +229,7 @@ The main latency knobs are:
 | `STT_INITIAL_PROMPT` | empty | Optional Whisper prompt for domain terms, names, and expected vocabulary. |
 | `whisper.ping_interval_seconds` | `null` | App-to-STT WebSocket ping interval. `null` disables client pings, which avoids timeouts during long local model inference. |
 | `whisper.ping_timeout_seconds` | `null` | App-to-STT WebSocket ping timeout. |
+| `APP_WORKERS` | `3` | Number of PolyTalk app Gunicorn workers. Increase for more concurrent sessions after checking CPU and memory headroom. |
 | `STT_WORKERS` | `1` | Number of STT web workers. Each worker loads its own Whisper model. |
 | `STT_PRELOAD_MODEL` | `true` | Load the Whisper model during STT startup instead of delaying the first stream. |
 | `STT_CHUNK_OVERLAP_SECONDS` | `0.25` | Audio overlap between STT windows. Helps avoid missing words at chunk boundaries. |
@@ -241,6 +242,7 @@ The main latency knobs are:
 | `translation.model` | `qwen3-8b` | Use a model supported by your provider or self-hosted server, such as qwen3-8b, TranslateGama, or another open-source/open-weight model. |
 | `translation.max_tokens` | `240` | Maximum translation output tokens. Keep bounded for live streaming, but allow enough room for Indic-script targets and longer sentence buffers. |
 | `tts.timeout_seconds` | `10` | Maximum wait for TTS generation. |
+| `TTS_WORKERS` | `4` | Number of Piper Gunicorn workers. Keep `2-4` on small hosts; raise toward `min(8, CPU cores)` only after CPU and memory headroom are confirmed. |
 
 For larger continuous-speech translation chunks, start with:
 

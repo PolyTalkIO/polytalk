@@ -23,4 +23,4 @@ COPY voices/ /data/
 
 EXPOSE 5000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "wsgi:app"]
+CMD ["sh", "-c", "exec gunicorn --bind 0.0.0.0:5000 --workers ${TTS_WORKERS:-4} wsgi:app"]

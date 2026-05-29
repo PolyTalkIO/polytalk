@@ -65,6 +65,7 @@ services:
     environment:
       - PIPER_MODEL=${TTS_MODEL:-en_GB-jenny_dioco-medium}
       - PIPER_DATA_DIR=/data
+      - TTS_WORKERS=${TTS_WORKERS:-4}
     volumes:
       - ./tts/wsgi.py:/app/wsgi.py:ro
       - ./tts/voices:/data:ro
@@ -93,6 +94,7 @@ services:
       # Application
       - APP_HOST=0.0.0.0
       - APP_PORT=8000
+      - APP_WORKERS=${APP_WORKERS:-3}
       - APP_DEBUG=${APP_DEBUG:-false}
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost:9000,http://127.0.0.1:9000}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
