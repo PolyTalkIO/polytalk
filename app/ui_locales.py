@@ -17,6 +17,7 @@ SUPPORTED_UI_LOCALE_CODES = {
     "pt",
     "ro",
     "sv",
+    "zh",
 }
 
 UI_LOCALE_NATIVE_NAMES = {
@@ -33,4 +34,5 @@ UI_LOCALE_NATIVE_NAMES = {
     "pt": "Português",
     "ro": "Română",
     "sv": "Svenska",
+    "zh": "中文",
 }
